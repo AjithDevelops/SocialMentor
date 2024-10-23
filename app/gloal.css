@@ -1,0 +1,47 @@
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px); /* Slide in from the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End at original position */
+  }
+}
+
+.social-mentor-animation {
+  animation: slideFadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px); /* Slide in from below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at original position */
+  }
+}
+
+.animated-item {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.animated-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.animated-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.animated-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.animated-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.animated-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* ... existing styles ... */
