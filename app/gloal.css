@@ -1,7 +1,7 @@
 @keyframes slideFadeIn {
   0% {
     opacity: 0;
-    transform: translateX(-50px); /* Slide in from the left */
+    transform: translateX(-100px); /* Slide in from the left */
   }
   100% {
     opacity: 1;
@@ -28,20 +28,53 @@
   animation: fadeIn 0.5s ease-in-out forwards;
 }
 
-.animated-item:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.animated-item:nth-child(2) {
+.animated-item:nth-child(n) {
   animation-delay: 0.2s;
 }
-.animated-item:nth-child(3) {
-  animation-delay: 0.3s;
+
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-150%); /* Start higher above the original position */
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0); /* End at original position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Ensure it stays at original position */
+  }
 }
-.animated-item:nth-child(4) {
-  animation-delay: 0.4s;
+
+@keyframes bubble {
+  0%, 100% {
+    transform: translateY(0); /* Stay at original position */
+  }
+  50% {
+    transform: translateY(-10px); /* Move up for bubble effect */
+  }
 }
-.animated-item:nth-child(5) {
-  animation-delay: 0.5s;
+
+.bubble-animation {
+  animation: bubble 2s ease-in-out infinite; /* Slide in once, then bubble */
+}
+
+@keyframes shine {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.shining-bubble-animation {
+  animation: bubble 2s ease-in-out infinite, shine 1.5s ease-in-out infinite; /* Combine bubble and shine effects */
 }
 
 /* ... existing styles ... */
