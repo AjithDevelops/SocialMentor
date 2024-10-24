@@ -3,6 +3,7 @@ import { features } from "@/constants";
 import Button from "./Button";
 import Image from "next/image";
 import { FeatredCardProps } from "@types";
+import "../app/gloal.css"
 
 const FeaturesCard: React.FC<FeatredCardProps> = ({ icon, title, content, index }) => (
   <div

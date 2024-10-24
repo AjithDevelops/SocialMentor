@@ -1,13 +1,24 @@
 @keyframes slideFadeIn {
   0% {
     opacity: 0;
-    transform: translateX(-100px); /* Slide in from the left */
+    transform: translateX(-150px); /* Slide in from the left */
   }
   100% {
     opacity: 1;
     transform: translateX(0); /* End at original position */
   }
 }
+
+@keyframes slideTopIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-150px); /* Slide in from the left */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* End at original position */
+    }
+  }
 
 .social-mentor-animation {
   animation: slideFadeIn 1s ease-in-out;
@@ -28,9 +39,6 @@
   animation: fadeIn 0.5s ease-in-out forwards;
 }
 
-.animated-item:nth-child(n) {
-  animation-delay: 0.2s;
-}
 
 
 @keyframes drop {
@@ -74,7 +82,90 @@
 }
 
 .shining-bubble-animation {
-  animation: bubble 2s ease-in-out infinite, shine 1.5s ease-in-out infinite; /* Combine bubble and shine effects */
+  animation: slideTopIn 1s ease-in-out, shine 1.5s ease-in-out infinite; /* Combine bubble and shine effects */
 }
 
 /* ... existing styles ... */
+
+.owner-section {
+  text-align: center;
+}
+
+.owner-image {
+  /* opacity: 0.8; */
+  width: 200px; /* Adjusted size to reduce the image size */
+  height: auto; /* Maintain aspect ratio */
+  animation: none; /* No animation by default */
+}
+
+.flip {
+    animation: shake 1s ease-in-out forwards, shake 1s ease-in-out forwards;
+}
+
+/* ... existing styles ... */
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+@keyframes zoom {
+    0% {
+      transform: scale(0.5); /* Start smaller */
+    }
+    100% {
+      transform: scale(1); /* End at original size */
+    }
+  }
+
+.owner-list {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  margin: 20px 0; /* Add vertical spacing */
+  padding: 10px; /* Add padding around the list */
+  list-style-type: none; /* Remove default list styling */
+  gap: 10px;
+}
+
+.owner-list-item {
+}
+
+.owner-list-item:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out forwards; /* Apply fade-in animation */
+}

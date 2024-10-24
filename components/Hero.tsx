@@ -20,7 +20,11 @@ const Hero: React.FC = () => (
         <h1 className={`flex-1 font-poppins font-semibold ss:text-[80px] text-[60px] text-white ss:leading-[120px] leading-[90px] ${styles.animatedText} social-mentor-animation`}>
           <span className="text-gradient">Social Mentor</span>
         </h1>
+
       </div>
+      <p className={`${styles.paragraph} max-w-[470px] mb-10`}>
+        We Empower Your Digital presence with Entertainment 
+      </p>
       <h1 className="w-full font-poppins font-semibold ss:text-[28px] text-[24px] text-white ss:leading-[50px] leading-[40px]">
         <span className="animated-item">✦ &nbsp;Social Media Mastery</span>
         <br />
@@ -32,9 +36,7 @@ const Hero: React.FC = () => (
         <br />
         <span className="animated-item">✦ &nbsp;Data Analysis & Insights</span>
       </h1>
-      <p className={`${styles.paragraph} max-w-[470px] mt-10`}>
-        We Empower Your Digital presence with Entertainment 
-      </p>
+
     </div>
 
     <div className={`${styles.flexCenter} flex-1 flex flex-col mx-4 md:my-0 my-10 relative space-y-4`}>
@@ -42,7 +44,7 @@ const Hero: React.FC = () => (
         <div className="bubble-animation"><GetStarted getStartedText={"Our"} startedText={"Services"} /></div> {/* Wrap in a div for animation */}
       </div>
       <div className="flex justify-end w-full">
-        <div className="bubble-animation"><GetStarted getStartedText={"Viral in"} startedText={"Social Media"} /></div> {/* Wrap in a div for animation */}
+        <div className="bubble-animation"><GetStarted getStartedText={"Let's"} startedText={"Go Viral"} /></div> {/* Wrap in a div for animation */}
       </div>
       <div className="flex justify-start">
         <div className="bubble-animation"><GetStarted getStartedText={"Get"} startedText={"Entertained"} /></div> {/* Wrap in a div for animation */}
