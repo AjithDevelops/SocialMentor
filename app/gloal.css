@@ -92,7 +92,7 @@
 }
 
 .owner-image {
-  /* opacity: 0.8; */
+  opacity: 0.8;
   width: 200px; /* Adjusted size to reduce the image size */
   height: auto; /* Maintain aspect ratio */
   animation: none; /* No animation by default */

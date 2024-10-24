@@ -77,19 +77,23 @@ const Owner: React.FC = () => {
     }, [isCountingComplete]);
 
     return (
-        <section className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingOwner} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}>
-            <div className="flex-1 flex flex-col">
-                <h2 className={`${styles.heading2}`}>
-                    Generated over <span className="text-gradient font-bold text-[60px] sm:text-[100px]">{displayCount.toLocaleString()}</span> Organic Views {/* Adjusted font size for mobile */}
+        <section className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingOwner} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow relative overflow-hidden`}>
+            <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('/path/to/your/background-image.jpg')" }}></div> {/* Background image */}
+            <div className="flex-1 flex flex-col relative z-10"> {/* Added z-index for layering */}
+                <h2 className={`${styles.heading2} text-shadow`}>
+                    Generated over <span className="text-gradient font-bold text-[60px] sm:text-[100px]">{displayCount.toLocaleString()}</span> Organic Views
                 </h2>
-                {showCountingText && ( // Conditionally render counting text
+                {showCountingText && (
                     <h2 className={`${styles.heading3} sm:text-[40px] animate-fadeIn`}>
-                        &nbsp;<span className="counting-text text-yellow-500">& Counting {countingText}</span> {/* Adjusted font size for mobile */}
+                        &nbsp;<span className="counting-text text-yellow-500">& Counting {countingText}</span>
                     </h2>
                 )}
             </div>
-            <div className={`${styles.flexCenter} flex-col sm:ml-10 ml-0 sm:mt-0 mt-10`}>
-                <div className={`${styles} py-1 px-1 bg-blue-gradient font-poppins font-medium text-[18px] text-primary outline-none rounded-[10px] hover:translate-x-2 transition-all ease-linear cursor-pointer`}>
+            <div className="separator" style={{ height: '2px', background: 'linear-gradient(to right, #00c6ff, #0072ff)', margin: '20px 0' }}></div>
+            <div className={`${styles.flexCenter} flex-col sm:ml-10 ml-0 sm:mt-0 mt-10 relative z-10`}>
+                <div 
+                    className={`${styles} py-1 px-1 bg-blue-gradient font-poppins font-medium text-[18px] text-primary outline-none rounded-[10px] transition-transform duration-300 ease-linear cursor-pointer hover:scale-105`} // CSS hover effect
+                >
                     <img 
                         ref={imageRef} 
                         src="/assets/SocialMentorImage.jpg" 
