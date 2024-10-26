@@ -24,6 +24,11 @@ import people01 from "./people01.png";
 import people02 from "./people02.png";
 import people03 from "./people03.png";
 import insta_1 from "./insta_1.webp";
+import start from "./start.svg";
+import research from "./research.svg";
+import cut from "./cut.svg";
+import funnel from "./funnel.svg";
+import script from "./script.svg";
 
 export {
   airbnb,
@@ -52,4 +57,9 @@ export {
   people02,
   people03,
   insta_1,
+  start,
+  research,
+  cut,
+  funnel,
+  script,
 };

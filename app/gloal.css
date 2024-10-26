@@ -92,15 +92,19 @@
 }
 
 .owner-image {
-  opacity: 0.8;
-  width: 200px; /* Adjusted size to reduce the image size */
+    /* opacity: 0.9; */
+  width: 120px; /* Adjusted size to reduce the image size */
   height: auto; /* Maintain aspect ratio */
   animation: none; /* No animation by default */
 }
 
-.flip {
-    animation: shake 1s ease-in-out forwards, shake 1s ease-in-out forwards;
+.owner-image:hover {
+ opacity: 0.8;
 }
+
+/* .flip {
+    animation: shake 1s ease-in-out forwards, shake 1s ease-in-out forwards;
+} */
 
 /* ... existing styles ... */
 
@@ -159,8 +163,10 @@
   gap: 10px;
 }
 
-.owner-list-item {
+.counting-text {
+  opacity: 0.8;
 }
+
 
 .owner-list-item:hover {
   transform: scale(1.05); /* Slightly enlarge on hover */
@@ -168,4 +174,38 @@
 
 .animate-fadeIn {
     animation: fadeIn 0.5s ease-in-out forwards; /* Apply fade-in animation */
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-150px); /* Slide in from the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End at original position */
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(150px); /* Slide in from the right */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End at original position */
+  }
+}
+
+.fadeInLeft {
+  animation: fadeInLeft 0.5s ease-in-out forwards; /* Apply left fade-in animation */
+}
+
+.fadeInRight {
+  animation: fadeInRight 0.5s ease-in-out forwards; /* Apply right fade-in animation */
+}
+
+.video-animation {
+  animation: slideFadeIn 1s ease-in-out; /* Apply slide fade-in animation */
 }

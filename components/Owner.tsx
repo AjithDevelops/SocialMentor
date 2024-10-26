@@ -9,7 +9,7 @@ const Owner: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
     const imageRef = useRef<HTMLImageElement | null>(null);
     const [count, setCount] = useState(20013256); // Initial count value
-    const [displayCount, setDisplayCount] = useState(500); // Displayed count value
+    const [displayCount, setDisplayCount] = useState(12542); // Displayed count value
     const [countingText, setCountingText] = useState('...'); // Initial counting text with dots
     const [isCountingComplete, setIsCountingComplete] = useState(false); // New state to track counting completion
     const [showCountingText, setShowCountingText] = useState(false); // New state to control visibility of counting text
@@ -81,7 +81,7 @@ const Owner: React.FC = () => {
             <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('/path/to/your/background-image.jpg')" }}></div> {/* Background image */}
             <div className="flex-1 flex flex-col relative z-10"> {/* Added z-index for layering */}
                 <h2 className={`${styles.heading2} text-shadow`}>
-                    Generated over <span className="text-gradient font-bold text-[60px] sm:text-[100px]">{displayCount.toLocaleString()}</span> Organic Views
+                    Generated over <span className="text-gradient font-bold text-[60px] sm:text-[80px]">{displayCount.toLocaleString()}</span> Organic Views
                 </h2>
                 {showCountingText && (
                     <h2 className={`${styles.heading3} sm:text-[40px] animate-fadeIn`}>
@@ -89,7 +89,17 @@ const Owner: React.FC = () => {
                     </h2>
                 )}
             </div>
-            <div className="separator" style={{ height: '2px', background: 'linear-gradient(to right, #00c6ff, #0072ff)', margin: '20px 0' }}></div>
+            <div className="slant-divider social-mentor-animation" style={{ height: '20px', width: '5%', background: 'transparent', position: 'relative' }}>
+                    <div style={{
+                        position: 'absolute',
+                        top: '0',
+                        left: '0',
+                        right: '0',
+                        height: '100%',
+                        background: 'linear-gradient(to right, transparent, #53d8e1, transparent)',
+                        transform: 'skewY(-80deg)',
+                    }} />
+                </div>
             <div className={`${styles.flexCenter} flex-col sm:ml-10 ml-0 sm:mt-0 mt-10 relative z-10`}>
                 <div 
                     className={`${styles} py-1 px-1 bg-blue-gradient font-poppins font-medium text-[18px] text-primary outline-none rounded-[10px] transition-transform duration-300 ease-linear cursor-pointer hover:scale-105`} // CSS hover effect
@@ -110,7 +120,9 @@ const Owner: React.FC = () => {
                         <Image src={insta_1} alt="Instagram Icon" className="w-8 h-8 mr-1" />
                         <span className="text-white">70K Followers</span>
                     </div>
+                   
                 </div>
+
             </div>
         </section>
     );

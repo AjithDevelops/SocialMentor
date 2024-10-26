@@ -1,4 +1,9 @@
-import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star } from "@/public/assets";
+import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, 
+    start,
+    research,
+    cut,
+    funnel,
+    script, } from "@/public/assets";
 
 export const navLinks = [
     {
@@ -22,25 +27,39 @@ export const navLinks = [
 export const features = [
     {
         id: "feature-1",
-        icon: star,
-        title: "Rewards",
+        icon: start,
+        title: "Setting up foundation",
         content:
-            "The best credit cards offer some tantalizing combinations of promotions and prizes",
+            "We start by building brand positioning, story constitution document, and a solid content strategy that aligns with your personality and goals.",
     },
     {
         id: "feature-2",
-        icon: shield,
-        title: "100% Secured",
+        icon: research,
+        title: "Research and ideation",
         content:
-            "We take proactive steps make sure your information and transactions are secure.",
+            "Our expert copywriters get into the research mode to come up with ideas that leave you with no other option other predictable organic growth.",
     },
     {
         id: "feature-3",
-        icon: send,
-        title: "Balance Transfer",
+        icon: script,
+        title: "Scripting",
         content:
-            "A balance transfer credit card can save you a lot of money in interest charges.",
+            "80% of any videos success depends on how a video is scripted and structured. Our copywriters make sure every idea is scripted properly before we send you the scripts.",
     },
+    {
+        id: "feature-4",
+        icon: cut,
+        title: "Editing and distribution",
+        content:
+            "Once you record the scripts and send us the raw videos, Our editors get to work and create a unique editing style for your brand and managers distribute the content.",
+    },
+    {
+        id: "feature-5",
+        icon: funnel,
+        title: "Organic marketing funnel setup",
+        content:
+            "The work doesn't stop here. Now marketers take over and setup backend systems and automations to bring you predictable organic leads ands sales.",
+    }
 ];
 
 export const feedback = [
