@@ -72,7 +72,7 @@ const Business: React.FC = () => (
       {features.map((feature, index) => (
         <FeaturesCard key={feature.id} {...feature} index={index} className="animated-item" />
       ))}
-       <Button styles="mt-10" />
+       {/* <Button styles="mt-10" /> */}
     </div>
     </div>
   </section>

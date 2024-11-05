@@ -7,7 +7,7 @@ const CTA: React.FC = () => (
                 Let's try our service now!
             </h2>
             <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-                Everything you need to accept card payment and grow your business on the planet.
+                Everything you need to know about Social Mentor and how it can help you grow your business on the planet.
             </p>
         </div>
         <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>

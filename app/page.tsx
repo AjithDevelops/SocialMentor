@@ -18,9 +18,9 @@ const Home: React.FC = () => {
         <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
           <div className={`${styles.boxWidth}`}>
             <Stats />
-            <Owner />
-            <InstaReels />
+            <Owner />   
             <Business />
+            <InstaReels />
             {/* <Billing /> */}
             {/* <CardDeal /> */}
             {/* <Testimonials /> */}

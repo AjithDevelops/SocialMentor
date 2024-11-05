@@ -21,7 +21,7 @@ const InstagramEmbed = () => {
   }, []);
 
   return (
-    <div className='flex justify-center items-center mt-32 mb-4 gap-16'>
+    <div className='flex justify-center items-center mb-32 gap-16'>
 
     {/* <video
             className='video-animation slideFadeInLeft'

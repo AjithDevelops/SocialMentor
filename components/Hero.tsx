@@ -25,7 +25,7 @@ const Hero: React.FC = () => (
       <p className={`${styles.paragraph} max-w-[470px] mb-10`}>
         We Empower Your Digital presence with Entertainment 
       </p>
-      <h1 className="w-full font-poppins font-semibold ss:text-[28px] text-[24px] text-white ss:leading-[50px] leading-[40px]">
+      <h1 className="w-full font-poppins font-semibold ss:text-[24px] text-[20px] text-white ss:leading-[50px] leading-[40px]">
         <span className="animated-item">✦ &nbsp;Social Media Mastery</span>
         <br />
         <span className="animated-item">✦ &nbsp;Digital Marketing</span>
@@ -35,6 +35,8 @@ const Hero: React.FC = () => (
         <span className="animated-item">✦ &nbsp;Web Design & Development</span>
         <br />
         <span className="animated-item">✦ &nbsp;Data Analysis & Insights</span>
+        <br />
+        <span className="animated-item">✦ &nbsp;Reliable SMM Panel</span>
       </h1>
 
     </div>

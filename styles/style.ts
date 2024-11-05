@@ -17,6 +17,7 @@ const styles = {
 
     marginX: "sm:mx-16 mx-6",
     marginY: "sm:my-16 my-6",
+    marginYOwner: "sm:my-16 my-6",
     fadeIn: "animate-fadeIn", // New animation class
     animatedText: "animate-fadeInSlideUp duration-1000", // Add duration here
 };
