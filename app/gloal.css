@@ -169,7 +169,7 @@
 
 
 .owner-list-item:hover {
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  /* transform: scale(1.05); */ /* Commented out to disable hover effect */
 }
 
 .animate-fadeIn {
@@ -208,4 +208,56 @@
 
 .video-animation {
   animation: slideFadeIn 1s ease-in-out; /* Apply slide fade-in animation */
+}
+
+@keyframes slideFadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-150px); /* Slide in from the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End at original position */
+  }
+}
+
+@keyframes slideFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(150px); /* Slide in from the right */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End at original position */
+  }
+}
+
+@keyframes slideFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(150px); /* Slide in from below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at original position */
+  }
+}
+
+.slideFadeInLeft {
+  animation: slideFadeInLeft 1s ease-in-out; /* Apply left slide-in animation */
+}
+
+.slideFadeInRight {
+  animation: slideFadeInRight 1s ease-in-out; /* Apply right slide-in animation */
+}
+
+.slideFadeInUp {
+  animation: slideFadeInUp 1s ease-in-out; /* Apply upward slide-in animation */
+}
+
+/* Hide slant-divider in mobile view */
+@media (max-width: 640px) { /* Adjust the max-width as needed for your mobile breakpoint */
+  .slant-divider.social-mentor-animation {
+    display: none; /* Hide the element */
+  }
 }

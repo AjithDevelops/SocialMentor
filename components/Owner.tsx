@@ -101,16 +101,18 @@ const Owner: React.FC = () => {
                     }} />
                 </div>
             <div className={`${styles.flexCenter} flex-col sm:ml-10 ml-0 sm:mt-0 mt-10 relative z-10`}>
-                <div 
-                    className={`${styles} py-1 px-1 bg-blue-gradient font-poppins font-medium text-[18px] text-primary outline-none rounded-[10px] transition-transform duration-300 ease-linear cursor-pointer hover:scale-105`} // CSS hover effect
-                >
-                    <img 
-                        ref={imageRef} 
-                        src="/assets/SocialMentorImage.jpg" 
-                        alt="Social Mentor Instagram" 
-                        className={`owner-image ${isVisible ? 'flip' : ''} w-full h-auto`} 
-                    />              
-                </div>
+                <a href="https://www.instagram.com/tharun_socialmentor/" target="_blank" rel="noopener noreferrer">
+                    <div 
+                        className={`${styles} py-1 px-1 bg-blue-gradient font-poppins font-medium text-[18px] text-primary outline-none rounded-[10px] transition-transform duration-300 ease-linear cursor-pointer hover:scale-105`} // CSS hover effect
+                    >
+                        <img 
+                            ref={imageRef} 
+                            src="/assets/SocialMentorImage.jpg" 
+                            alt="Social Mentor Instagram" 
+                            className={`owner-image ${isVisible ? 'flip' : ''} w-full h-auto`} 
+                        />              
+                    </div>
+                </a>
                 <div className={`${styles.paragraph} max-w-[470px] mt-5 owner-list`}>
                     <div className='owner-list-item flex items-center'>
                         <span className='owner-name text-lg font-bold'>Tharun Kumar K</span>
