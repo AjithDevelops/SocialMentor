@@ -11,16 +11,16 @@ export const navLinks = [
         title: "Home",
     },
     {
+        id: "about",
+        title: "About",
+    },
+    {
         id: "features",
         title: "Features",
     },
     {
-        id: "product",
-        title: "Product",
-    },
-    {
-        id: "clients",
-        title: "Clients",
+        id: "services",
+        title: "Services",
     },
 ];
 
@@ -110,16 +110,16 @@ export const stats = [
 export const footerLinks = [
     {
         id: "footerLinks-1",
-        title: "Useful Links",
+        title: "Policy",
         links: [
             {
-                name: "Content",
-                link: "https://www.hoobank.com/content/",
+                name: "Privacy Policy",
+                link: "/privacyPolicy",
             },
-            // {
-            //     name: "How it Works",
-            //     link: "https://www.hoobank.com/how-it-works/",
-            // },
+            {
+                name: "Refund Policy",
+                link: "/refundPolicy",
+            },
             // {
             //     name: "Create",
             //     link: "https://www.hoobank.com/create/",
@@ -136,10 +136,10 @@ export const footerLinks = [
     },
     {
         id: "footerLinks-2",
-        title: "Community",
+        title: "Help Center",
         links: [
             {
-                name: "Help Center",
+                name: "Contact Us",
                 link: "https://www.hoobank.com/help-center/",
             },
             // {
@@ -162,11 +162,11 @@ export const footerLinks = [
     },
     {
         id: "footerLinks-3",
-        title: "Partner",
+        title: "Contract",
         links: [
             {
-                name: "Our Partner",
-                link: "https://www.hoobank.com/our-partner/",
+                name: "Terms of Use",
+                link: "/termsOfUse",
             },
             // {
             //     name: "Become a Partner",

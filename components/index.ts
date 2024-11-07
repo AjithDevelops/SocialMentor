@@ -10,6 +10,9 @@ import Testimonials from "./Testimonials";
 import Hero from "./Hero";
 import Owner from "./Owner";
 import InstaReels from "./InstaReels";
+import PrivacyPolicy from "./privacy";
+import TermsOfUse from "./TermsOfUse";
+import RefundPolicy from "./RefundPolicy";
 
 export {
     Navbar,
@@ -23,5 +26,8 @@ export {
     Testimonials,
     Hero,
     Owner,
-    InstaReels
+    InstaReels,
+    PrivacyPolicy,
+    TermsOfUse,
+    RefundPolicy
 };
