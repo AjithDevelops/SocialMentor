@@ -29,6 +29,8 @@ import research from "./research.svg";
 import cut from "./cut.svg";
 import funnel from "./funnel.svg";
 import script from "./script.svg";
+import youtubeReal from "./youtubeReal.svg";
+import instagramReal from "./instaReal.svg";
 
 export {
   airbnb,
@@ -62,4 +64,6 @@ export {
   cut,
   funnel,
   script,
+  youtubeReal,
+  instagramReal,
 };

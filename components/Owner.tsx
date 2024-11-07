@@ -77,7 +77,7 @@ const Owner: React.FC = () => {
     }, [isCountingComplete]);
 
     return (
-        <section className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingOwner} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow relative overflow-hidden`}>
+        <section id="about" className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingOwner} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow relative overflow-hidden`}>
             <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('/path/to/your/background-image.jpg')" }}></div> {/* Background image */}
             <div className="flex-1 flex flex-col relative z-10"> {/* Added z-index for layering */}
                 <h2 className={`${styles.heading2} text-shadow`}>

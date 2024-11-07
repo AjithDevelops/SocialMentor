@@ -10,7 +10,7 @@ const CTA: React.FC = () => (
                 Everything you need to know about Social Mentor and how it can help you grow your business on the planet.
             </p>
         </div>
-        <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
+        <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`} onClick={() => window.location.href='/ourServices'}>
             <Button />
         </div>
     </section>

@@ -20,6 +20,9 @@ const styles = {
     marginYOwner: "sm:my-16 my-6",
     fadeIn: "animate-fadeIn", // New animation class
     animatedText: "animate-fadeInSlideUp duration-1000", // Add duration here
+
+    paddingPlans: "sm:px-8 px-3 sm:py-6 py-2",
+    marginPlans: "sm:my-16 my-4",
 };
 
 

@@ -42,14 +42,14 @@ const Hero: React.FC = () => (
     </div>
 
     <div className={`${styles.flexCenter} flex-1 flex flex-col mx-4 md:my-0 my-10 relative space-y-4`}>
-      <div className="flex justify-start w-full">
-        <div className="bubble-animation"><GetStarted getStartedText={"Our"} startedText={"Services"} /></div> {/* Wrap in a div for animation */}
+      <div className="flex justify-start w-full cursor-pointer z-10" onClick={() => window.location.href='/ourServices'}>
+        <div className="bubble-animation" ><GetStarted getStartedText={"Our"} startedText={"Services"} /></div> {/* Wrap in a div for animation and add navigation on click */}
       </div>
-      <div className="flex justify-end w-full">
-        <div className="bubble-animation"><GetStarted getStartedText={"Let's"} startedText={"Go Viral"} /></div> {/* Wrap in a div for animation */}
+      <div className="flex justify-end w-full cursor-pointer z-10" onClick={() => window.location.href='/goViral'}>
+        <div className="bubble-animation" ><GetStarted getStartedText={"Let's"} startedText={"Go Viral"} /></div> {/* Wrap in a div for animation and add navigation on click */}
       </div>
-      <div className="flex justify-start">
-        <div className="bubble-animation"><GetStarted getStartedText={"Get"} startedText={"Entertained"} /></div> {/* Wrap in a div for animation */}
+      <div className="flex justify-start cursor-pointer z-10" onClick={() => window.location.href='https://socialmentor.graphy.com/s/store'}>
+        <div className="bubble-animation" ><GetStarted getStartedText={"Get"} startedText={"Courses"} /></div> {/* Wrap in a div for animation and add navigation on click */}
       </div>
       <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
       <div className="absolute z-[1] w-[80%] h-[80%] rounded-full bottom-40 white__gradient" />

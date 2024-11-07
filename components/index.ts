@@ -13,6 +13,7 @@ import InstaReels from "./InstaReels";
 import PrivacyPolicy from "./privacy";
 import TermsOfUse from "./TermsOfUse";
 import RefundPolicy from "./RefundPolicy";
+import Plans from "./Plans";
 
 export {
     Navbar,
@@ -29,5 +30,6 @@ export {
     InstaReels,
     PrivacyPolicy,
     TermsOfUse,
-    RefundPolicy
+    RefundPolicy,
+    Plans
 };
