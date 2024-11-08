@@ -60,7 +60,7 @@ const OurServices: React.FC = () => {
         </div>
         <div className={`flex justify-center`}>
           <div className={`${styles.elegantContainer} ${styles.paddingX}`}>
-            <div className={`${styles.paddingX} ${styles.flexStart} mb-[50px]`}>
+            <div className={`${styles.paddingX} ${styles.flexStart} sm:mb-[50px] mb-[20px]`}>
               <div className={`${styles.boxWidth}`}>
               <h2 className={`${styles.elegantHeading3}`}>
               <span className=""> Social Media Engagement </span>
