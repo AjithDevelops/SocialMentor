@@ -27,7 +27,6 @@ const Home: React.FC = () => {
             {/* <Clients /> */}
             <CTA />
             <Footer />
-
           </div>
         </div>
       </div>

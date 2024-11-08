@@ -1,6 +1,6 @@
 "use client"
 import styles from "@/styles/style";
-import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Footer, Owner, InstaReels, Plans } from "@/components"
+import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Footer, Owner, InstaReels, Plans, FooterShort } from "@/components"
 const GoViral: React.FC = () => {
   return (
     <>
@@ -42,6 +42,7 @@ const GoViral: React.FC = () => {
             <Plans />
           </div>
         </div>
+        <FooterShort />
       </div>
     </>
   )

@@ -14,6 +14,7 @@ import PrivacyPolicy from "./privacy";
 import TermsOfUse from "./TermsOfUse";
 import RefundPolicy from "./RefundPolicy";
 import Plans from "./Plans";
+import FooterShort from "./FooterShort";
 
 export {
     Navbar,
@@ -31,5 +32,6 @@ export {
     PrivacyPolicy,
     TermsOfUse,
     RefundPolicy,
-    Plans
+    Plans,
+    FooterShort
 };

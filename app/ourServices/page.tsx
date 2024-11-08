@@ -2,7 +2,7 @@
 import styles from "@/styles/style";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Navbar } from "@/components";
+import { Footer, FooterShort, Navbar } from "@/components";
 import { youtubeReal, instagramReal, Flag_for_review, QrCode } from "@/public/assets"; // Import icons
 import Button from "@components/Button";
 
@@ -390,6 +390,7 @@ const OurServices: React.FC = () => {
         </div>
     </div>
       </div>
+      <FooterShort />
       </div>
 
       {/* Modal for Flag_for_review */}

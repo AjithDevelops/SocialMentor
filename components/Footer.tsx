@@ -55,6 +55,11 @@ const Footer: React.FC = () => (
         ))}
       </div>
     </div>
+    <footer className="flex flex-row md:mt-0 mt-6 text-white text-center">
+        <p className={`animate-shrink-expand`}>
+            Developed by Ajith Kumar. <a style={{textDecoration: "underline", color: "#007bff"}} href="https://www.instagram.com/reactjs_with_ajith">@reactjs_with_ajith</a>
+        </p>
+    </footer>
   </section>
 );
 
