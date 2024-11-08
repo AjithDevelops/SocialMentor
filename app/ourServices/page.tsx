@@ -424,7 +424,7 @@ const OurServices: React.FC = () => {
                 <p className="sm:text-base text-sm">✓ {getSelectedLabel()}</p>
                 <p className="sm:text-base text-sm">Amount: <span className="text-md font-bold"> {price} </span></p>
                 <div className="border border-blue-500 bg-blue-100 p-4 rounded-md mt-4">
-                    <p className="sm:text-base text-sm">Once paid, send the payment screenshot to <a href="https://www.instagram.com/tharun_socialmentor" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">Tharun Kumar (Click here)</a> to start the process.</p>
+                    <p className="sm:text-base text-sm">Once paid, send the payment screenshot to <a href="https://www.instagram.com/tharun_socialmentor" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">Tharun Kumar</a> to start the process.</p>
                 </div>
             </div>
             <button onClick={() => setIsQrModalOpen(false)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
