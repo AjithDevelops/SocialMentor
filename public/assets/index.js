@@ -31,6 +31,8 @@ import funnel from "./funnel.svg";
 import script from "./script.svg";
 import youtubeReal from "./youtubeReal.svg";
 import instagramReal from "./instaReal.svg";
+import Flag_for_review from "./Flag_For_Review.jpg";
+import QrCode from "./QR_code.jpeg";
 
 export {
   airbnb,
@@ -66,4 +68,6 @@ export {
   script,
   youtubeReal,
   instagramReal,
+  Flag_for_review,
+  QrCode,
 };

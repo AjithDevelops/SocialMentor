@@ -3,15 +3,86 @@ import styles from "@/styles/style";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Navbar } from "@/components";
-import { youtubeReal, instagramReal } from "@/public/assets"; // Import icons
+import { youtubeReal, instagramReal, Flag_for_review, QrCode } from "@/public/assets"; // Import icons
 import Button from "@components/Button";
 
 const OurServices: React.FC = () => {
+
   const [activeTab, setActiveTab] = useState("Instagram"); // State for active tab
   const [selectedOption, setSelectedOption] = useState("Followers"); // Default selected option
-  const [count, setCount] = useState(1000); // State for count (followers, likes, views)
+  const [count, setCount] = useState(0); // State for count (followers, likes, views)
   const [price, setPrice] = useState(""); // State for price
   const [followerType, setFollowerType] = useState("Real"); // State for follower type
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false); // State for QR modal visibility
+
+  // Define dropdown values and labels for followers
+  const followerOptions = {
+    fakeBot: [
+      { value: 850, label: "5K Followers" },
+      { value: 1500, label: "10K Followers" },
+      { value: 2500, label: "20K Followers" },
+      { value: 4800, label: "50K Followers" },
+      { value: 7500, label: "1 Lakh Followers" },
+    ],
+    real: [
+      { value: 1450, label: "1200 Real Tamil Followers" },
+      { value: 2250, label: "2500 Real Tamil Followers" },
+      { value: 4500, label: "5000 Real Tamil Followers" },
+      { value: 8500, label: "10,000 Real Tamil Followers" },
+    ],
+  };
+
+  // Define dropdown values and labels for Real Instagram views
+  const realInstagramViewOptions = [
+    { value: 220, label: "10K Views" },
+    { value: 425, label: "25K Views" },
+    { value: 675, label: "50K Views" },
+    { value: 850, label: "1 Lakh Views" },
+    { value: 3200, label: "5 Lakh Views" },
+    { value: 5800, label: "1 Million Views" },
+  ];
+
+  // Define dropdown values and labels for Real Instagram likes
+  const realInstagramLikeOptions = [
+    { value: 120, label: "1000 Likes" },
+    { value: 430, label: "5K Likes" },
+    { value: 750, label: "10K Likes" },
+    { value: 3450, label: "1 Lakh Likes" },
+  ];
+
+  // Define dropdown values and labels for Real YouTube lifetime subscribers
+  const realYouTubeSubscriberOptions = [
+    { value: 850, label: "1000 Lifetime Subscribers" },
+    { value: 1500, label: "2000 Lifetime Subscribers" },
+    { value: 3150, label: "5000 Lifetime Subscribers" },
+    { value: 5950, label: "10K Lifetime Subscribers" },
+    { value: 42000, label: "50K Lifetime Subscribers" },
+    { value: 63500, label: "1 Lakh Lifetime Subscribers" },
+  ];
+
+  // Define dropdown values and labels for Real YouTube views
+  const realYouTubeViewOptions = [
+    { value: 250, label: "1000 Views" },
+    { value: 500, label: "2500 Views" },
+    { value: 950, label: "5000 Views" },
+    { value: 1750, label: "10K Views" },
+    { value: 3450, label: "25K Views" },
+    { value: 6000, label: "50K Views" },
+    { value: 10500, label: "1 Lakh Views" },
+  ];
+
+  // Define dropdown values and labels for Organic Watch Hours
+  const organicWatchHoursOptions = [
+    { value: 5000, label: "4000 Hours" },
+  ];
+
+  const [currentFollowerOptions, setCurrentFollowerOptions] = useState(followerOptions.real); // Default to Real followers
+
+  const handleFollowerTypeChange = (type: string) => {
+    setFollowerType(type);
+    setCurrentFollowerOptions(type === "Fake/Bot" ? followerOptions.fakeBot : followerOptions.real);
+  };
 
   useEffect(() => {
     calculatePrice(); // Calculate price on component mount
@@ -19,29 +90,65 @@ const OurServices: React.FC = () => {
 
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
-    setCount(1000); // Reset count to 1000 when option changes
+    setCount(0); // Reset count when option changes
     setPrice(""); // Reset price when option changes
   };
 
   const calculatePrice = () => {
-    let calculatedPrice = 0;
-    if (selectedOption === "Followers") {
-      calculatedPrice = count * 0.1; // Example pricing logic for followers
-    } else if (selectedOption === "Likes") {
-      calculatedPrice = count * 0.05; // Example pricing logic for likes
-    } else if (selectedOption === "Views") {
-      calculatedPrice = count * 0.02; // Example pricing logic for views
-    }
-    setPrice(`₹${calculatedPrice.toFixed(2)}`); // Display price in rupees
+    setPrice(`₹${count.toFixed(2)}`); // Display price in rupees
   };
 
   const handleCountChange = (value: number) => {
-    if (value >= 1000) {
       setCount(value);
-    } else {
-      setCount(1000); // Set to minimum if below 1000
-    }
   };
+
+  // Add this useEffect to set initial count based on selected option
+  useEffect(() => {
+    if (activeTab === "Instagram" && selectedOption === "Followers") {
+        setCount(currentFollowerOptions[0]?.value || 0); // Set initial count for Followers
+    } else if (activeTab === "Instagram" && selectedOption === "Likes") {
+        setCount(realInstagramLikeOptions[0]?.value || 0); // Set initial count for Likes
+    } else if (activeTab === "Instagram" && selectedOption === "Views") {
+        setCount(realInstagramViewOptions[0]?.value || 0); // Set initial count for Views
+    } else if (activeTab === "YouTube" && selectedOption === "Subscribers") {
+        setCount(realYouTubeSubscriberOptions[0]?.value || 0); // Set initial count for Subscribers
+    } else if (activeTab === "YouTube" && selectedOption === "Watch Hours") {
+        setCount(organicWatchHoursOptions[0]?.value || 0); // Set initial count for Watch Hours
+    } else if (activeTab === "YouTube" && selectedOption === "Views") {
+        setCount(realYouTubeViewOptions[0]?.value || 0); // Set initial count for YouTube Views
+    }
+}, [selectedOption, currentFollowerOptions]);
+
+  // Function to toggle modal
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const handlePayClick = () => {
+    setIsQrModalOpen(true); // Open QR modal on pay button click
+  };
+
+  const getSelectedLabel = () => {
+    // Function to get the label based on the selected options
+    if (activeTab === "Instagram") {
+        if (selectedOption === "Followers") {
+            return currentFollowerOptions.find(option => option.value === count)?.label || "N/A";
+        } else if (selectedOption === "Likes") {
+            return realInstagramLikeOptions.find(option => option.value === count)?.label || "N/A";
+        } else if (selectedOption === "Views") {
+            return realInstagramViewOptions.find(option => option.value === count)?.label || "N/A";
+        }
+    } else if (activeTab === "YouTube") {
+        if (selectedOption === "Subscribers") {
+            return realYouTubeSubscriberOptions.find(option => option.value === count)?.label || "N/A";
+        } else if (selectedOption === "Watch Hours") {
+            return organicWatchHoursOptions[0]?.label || "N/A"; // Assuming only one option for Watch Hours
+        } else if (selectedOption === "Views") {
+            return realYouTubeViewOptions.find(option => option.value === count)?.label || "N/A";
+        }
+    }
+    return "N/A"; // Default return if no match found
+};
 
   return (
     <>
@@ -60,7 +167,7 @@ const OurServices: React.FC = () => {
         </div>
         <div className={`flex justify-center`}>
           <div className={`${styles.elegantContainer} ${styles.paddingX}`}>
-            <div className={`${styles.paddingX} ${styles.flexStart} sm:mb-[50px] mb-[20px]`}>
+            <div className={`${styles.paddingX} ${styles.flexStart} sm:mb-[30px] mb-[20px]`}>
               <div className={`${styles.boxWidth}`}>
               <h2 className={`${styles.elegantHeading3}`}>
               <span className=""> Social Media Engagement </span>
@@ -117,7 +224,7 @@ const OurServices: React.FC = () => {
                     <div className="mt-4 flex flex-col items-center">
                       <select 
                         value={followerType} 
-                        onChange={(e) => setFollowerType(e.target.value)} 
+                        onChange={(e) => handleFollowerTypeChange(e.target.value)} 
                         className={`${styles.elegantDropdown} shadow-md`}
                       >
                         {activeTab === "Instagram" && selectedOption === "Followers" && (
@@ -129,19 +236,16 @@ const OurServices: React.FC = () => {
                         {activeTab === "Instagram" && selectedOption === "Likes" && (
                           <>
                             <option value="Real">Real Instagram Likes</option>
-                            <option value="Fake/Bot">Fake/Bot Instagram Likes</option>
                           </>
                         )}
                         {activeTab === "Instagram" && selectedOption === "Views" && (
                           <>
                             <option value="Real">Real Instagram Views</option>
-                            <option value="Fake/Bot">Fake/Bot Instagram Views</option>
                           </>
                         )}
                         {activeTab === "YouTube" && selectedOption === "Subscribers" && (
                           <>
                             <option value="Real">Real YouTube Subscribers</option>
-                            <option value="Fake/Bot">Fake/Bot YouTube Subscribers</option>
                           </>
                         )}
                         {activeTab === "YouTube" && selectedOption === "Watch Hours" && (
@@ -150,20 +254,103 @@ const OurServices: React.FC = () => {
                         {activeTab === "YouTube" && selectedOption === "Views" && (
                           <>
                             <option value="Real">Real YouTube Views</option>
-                            <option value="Fake/Bot">Fake/Bot YouTube Views</option>
                           </>
                         )}
                       </select>
-                      <input 
-                        type="number" 
-                        placeholder={`Enter number of ${selectedOption.toLowerCase()}`} 
-                        className={`${styles.elegantInput} shadow-md`}
-                        value={count}
-                        onChange={(e) => handleCountChange(Number(e.target.value))}
-                      />
+                      {activeTab === "Instagram" && selectedOption === "Followers" && (
+                        <select 
+                          value={count} 
+                          onChange={(e) => handleCountChange(Number(e.target.value))} 
+                          className={`${styles.elegantDropdown} shadow-md`}
+                        >
+                          {currentFollowerOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                      {activeTab === "Instagram" && selectedOption === "Views" && (
+                        <select 
+                          value={count} 
+                          onChange={(e) => handleCountChange(Number(e.target.value))} 
+                          className={`${styles.elegantDropdown} shadow-md`}
+                        >
+                          {realInstagramViewOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                      {activeTab === "Instagram" && selectedOption === "Likes" && (
+                        <select 
+                          value={count} 
+                          onChange={(e) => handleCountChange(Number(e.target.value))} 
+                          className={`${styles.elegantDropdown} shadow-md`}
+                        >
+                          {realInstagramLikeOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                      {activeTab === "YouTube" && selectedOption === "Subscribers" && (
+                        <select 
+                          value={count} 
+                          onChange={(e) => handleCountChange(Number(e.target.value))} 
+                          className={`${styles.elegantDropdown} shadow-md`}
+                        >
+                          {realYouTubeSubscriberOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                      {activeTab === "YouTube" && selectedOption === "Views" && (
+                        <select 
+                          value={count} 
+                          onChange={(e) => handleCountChange(Number(e.target.value))} 
+                          className={`${styles.elegantDropdown} shadow-md`}
+                        >
+                          {realYouTubeViewOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                      {activeTab === "YouTube" && selectedOption === "Watch Hours" && (
+                        <select 
+                          value={count} 
+                          onChange={(e) => handleCountChange(Number(e.target.value))} 
+                          className={`${styles.elegantDropdown} shadow-md`}
+                        >
+                          {organicWatchHoursOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                      {activeTab === "Instagram" && (
+                        <div className="flex items-center mt-4">
+                          <input 
+                            type="checkbox" 
+                            id="flagForReview" 
+                            className="mr-2" 
+                          />
+                          <div className="text-white text-md">
+                            Disabled "Flag for Review" in my account <span><a href="#" className="text-blue-500 ml-2 underline" onClick={toggleModal}>How to disable?</a></span>
+                            </div>
+                          </div>
+            
+                      )}
                       <button 
                         className="py-2 px-3 mt-6 bg-blue-gradient font-poppins font-medium text-[16px] text-primary outline-none rounded-[10px] hover:translate-y-2 hover:scale-110 transition-all ease-linear cursor-pointer" 
-                        onClick={() => alert(`Proceeding to pay: ${price}`)}
+                        onClick={handlePayClick}
                       >
                         <span>Pay {price}</span>
                       </button>
@@ -171,36 +358,21 @@ const OurServices: React.FC = () => {
                   )}
                 </div>
                 {selectedOption === "Followers" && followerType === "Fake/Bot" && (
-                  <div className="mt-10 flex justify-center">
+                  <div className="mt-6 flex justify-center">
                     <p className="text-black text-sm text-center bg-white/90 backdrop-blur-md p-2 rounded-md border border-white/20 shadow-lg">
-                      <span className="font-bold">Disclaimer:</span> These followers are not real and may get reduced in the future.
+                      <span className="font-bold">Disclaimer:</span> These followers are not real and may get dropped in the future.
                     </p>
                   </div>
                 )}
 
-                {selectedOption === "Likes" && followerType === "Fake/Bot" && (
-                  <div className="mt-10 flex justify-center">
+                {activeTab === "YouTube" && selectedOption === "Watch Hours" && (
+                  <div className="mt-6 flex justify-center">
                     <p className="text-black text-sm text-center bg-white/90 backdrop-blur-md p-2 rounded-md border border-white/20 shadow-lg">
-                      <span className="font-bold">Disclaimer:</span> These likes are not real and may get reduced in the future.
+                      <span className="font-bold">Disclaimer:</span> 2-3 months time duration (approx.) required to complete.
                     </p>
                   </div>
                 )}
 
-                {selectedOption === "Views" && followerType === "Fake/Bot" && (
-                  <div className="mt-10 flex justify-center">
-                    <p className="text-black text-sm text-center bg-white/90 backdrop-blur-md p-2 rounded-md border border-white/20 shadow-lg">
-                      <span className="font-bold">Disclaimer:</span> These views are not real and may get reduced in the future.
-                    </p>
-                  </div>
-                )}
-
-                {activeTab === "YouTube" && followerType === "Fake/Bot" && (
-                  <div className="mt-10 flex justify-center">
-                    <p className="text-black text-sm text-center bg-white/90 backdrop-blur-md p-2 rounded-md border border-white/20 shadow-lg">
-                      <span className="font-bold">Disclaimer:</span> These subscribers are not real and may get reduced in the future.
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -219,6 +391,48 @@ const OurServices: React.FC = () => {
     </div>
       </div>
       </div>
+
+      {/* Modal for Flag_for_review */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 m-10">
+          <div className="bg-white p-4 rounded shadow-lg max-w-sm w-full flex flex-col items-center">
+            <p className="text-center mb-4">Make sure to turn off the <b>"Flag for Review"</b> option in your insta account before payment</p>
+            <Image 
+              src={Flag_for_review} 
+              alt="Flag for Review" 
+              className="sm:w-3/4 w-1/2 h-auto max-h-85"
+            />
+            <button onClick={toggleModal} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Close</button>
+          </div>
+        </div>
+      )}
+
+      {/* Modal for QR Code */}
+      {isQrModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 m-10">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full flex flex-col items-center">
+            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
+            <p className="text-center mb-2">Please scan to pay the amount:</p>
+            <Image 
+              src={QrCode} 
+              alt="QR Code" 
+              className="sm:w-3/4 w-1/2 h-auto max-h-85 mb-4"
+            />
+            <div className="w-full mb-4">
+                <h4 className="font-medium sm:text-base text-sm">Order Details:</h4>
+                <p className="sm:text-base text-sm">✓ {activeTab} {selectedOption}  </p>
+                <p className="sm:text-base text-sm">✓ {getSelectedLabel()}</p>
+                <p className="sm:text-base text-sm">Amount: <span className="text-md font-bold"> {price} </span></p>
+                <div className="border border-blue-500 bg-blue-100 p-4 rounded-md mt-4">
+                    <p className="sm:text-base text-sm">Once paid, send the payment screenshot to <a href="https://www.instagram.com/tharun_socialmentor" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">Tharun Kumar (Click here)</a> to start the process.</p>
+                </div>
+            </div>
+            <button onClick={() => setIsQrModalOpen(false)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
+                Close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
