@@ -20,7 +20,7 @@ const Footer: React.FC = () => (
             className="flex flex-col ss:my-0 my-4 mix-w-[150px"
           >
             <h4
-              className={`font-poppins font-medium text-[18px] leading-[27px] text-white`}
+              className={`font-poppins font-medium sm:text-[18px] text-[16px] sm:leading-[27px] leading-[20px] text-white`}
             >
               {footerLink.title}
             </h4>
@@ -28,7 +28,7 @@ const Footer: React.FC = () => (
               {footerLink.links.map((link, index) => (
                 <li
                   key={link.name}
-                  className={`font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer ${index !== footerLink.links.length - 1 ? "mb-4" : "mb-0"}`}
+                  className={`font-poppins font-normal sm:text-[16px] text-[14px] sm:leading-[24px] leading-[20px] text-dimWhite hover:text-secondary cursor-pointer ${index !== footerLink.links.length - 1 ? "mb-4" : "mb-0"}`}
                 >
                   <a href={`${link.link}`} rel="noopener noreferrer">
                     {link.name}

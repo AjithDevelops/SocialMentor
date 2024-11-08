@@ -26,7 +26,6 @@ const GoViral: React.FC = () => {
         style={{
           border: '0',
           boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-          margin: '10px', // Increased margin for more spacing
           transform: 'rotate(0deg)', // Added rotation for angle
           width: '120%', // Set width to 100% for full container width
           height: 'auto', // Set height to auto to maintain aspect ratio

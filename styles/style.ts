@@ -1,7 +1,7 @@
 const styles = {
     boxWidth: "xl:max-w-[1280px] w-full",
 
-    heading2: "font-poppins font-semibold text-[32px] xs:text-[48px] text-white xs:leading-[76.8px] leading-[66.8px] w-full",
+    heading2: "font-poppins font-semibold text-[28px] xs:text-[48px] text-white xs:leading-[76.8px] leading-[40.8px] w-full",
     heading3: "font-poppins font-semibold text-[28px] xs:text-[36px] text-white xs:leading-[64.8px] leading-[54.8px] w-full",
     headingOwner: "font-poppins font-semibold text-[28px] xs:text-[36px] sm:text-[60px] text-white xs:leading-[64.8px] leading-[54.8px] w-full",
     paragraph: "font-poppins font-normal text-dimWhite text-[16px] xs:text-[18px] leading-[30.8px]",
@@ -24,7 +24,7 @@ const styles = {
 
     marginX: "sm:mx-8 mx-4",
     marginX1: "sm:mx-32 mx-6",
-    marginY: "sm:my-8 my-4",
+    marginY: "sm:my-8 my-8",
     marginYOwner: "sm:my-8 my-4",
     fadeIn: "animate-fadeIn", // New animation class
     animatedText: "animate-fadeInSlideUp duration-1000", // Add duration here
@@ -42,8 +42,8 @@ const styles = {
 
     elegantContainer: "sm:w-1/2 mx-6 my-6 w-full bg-black-gradient-2 rounded-lg shadow-xl sm:px-2 py-4 px-2 sm:my-10 my:6",
     elegantContainer1: "w-full bg-black-gradient-2 rounded-lg shadow-xl sm:px-2 py-8 sm:my-10 my:6 mx-10",
-    elegantDropdown: "sm:p-3 p-2 rounded-lg w-full sm:w-1/2 text-black mb-4 shadow-md border border-gray-300 transition duration-300 hover:shadow-lg", // Added hover effect
-    elegantInput: "sm:p-3 p-2 rounded-lg w-full sm:w-1/2 text-black mx-auto shadow-md border border-gray-300 transition duration-300 hover:shadow-lg", // Added hover effect
+    elegantDropdown: "sm:p-3 rounded-lg w-full sm:w-1/2 text-black mb-4 shadow-md border border-gray-300 transition duration-300 hover:shadow-lg", // Added hover effect
+    elegantInput: "p-3 rounded-lg w-full sm:w-1/2 text-black mx-auto shadow-md border border-gray-300 transition duration-300 hover:shadow-lg", // Added hover effect
     elegantPriceText: "mt-2 text-center text-gray-200 text-2xl font-semibold",
 
     cardContainer: "bg-white rounded-lg shadow-lg p-6 border border-gray-300 transition duration-300 hover:shadow-xl", // Added hover effect

@@ -5,8 +5,8 @@ import Button from "./Button";
 const Plans: React.FC = () => {
     return (
     <div className="bg-primary overflow-hidden flex flex-col sm:flex-row justify-around gap-2">
-    <div className={`${styles.flexCenter} ${styles.marginPlans} ${styles.paddingPlans} flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] box-shadow transition-transform transform hover:scale-105`}>
-        <div className="flex-1 flex flex-col items-start p-6">
+    <div className={`${styles.flexCenter} ${styles.marginPlans} ${styles.paddingPlans} sm:my-4 flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] box-shadow transition-transform transform hover:scale-105`}>
+        <div className="flex-1 flex flex-col items-start p-2">
             <h2 className={`${styles.heading3} text-left text-white`}>
                 Basic
             </h2>
@@ -34,8 +34,8 @@ const Plans: React.FC = () => {
         </div> 
     </div>
 
-    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingPlans} flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] box-shadow transition-transform transform hover:scale-105`}>
-        <div className="flex-1 flex flex-col items-start p-6">
+    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingPlans} sm:my-4 flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] box-shadow transition-transform transform hover:scale-105`}>
+        <div className="flex-1 flex flex-col items-start p-2">
             <h2 className={`${styles.heading3} text-left text-white`}>
                 Advance
             </h2>
@@ -66,8 +66,8 @@ const Plans: React.FC = () => {
         </div> 
     </div>
 
-    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingPlans} flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] box-shadow transition-transform transform hover:scale-105`}>
-        <div className="flex-1 flex flex-col items-start p-6">
+    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingPlans} sm:my-4 flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] box-shadow transition-transform transform hover:scale-105`}>
+        <div className="flex-1 flex flex-col items-start p-2">
             <h2 className={`${styles.heading3} text-left text-white`}>
                 Pro
             </h2>

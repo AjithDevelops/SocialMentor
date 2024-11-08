@@ -80,11 +80,11 @@ const Owner: React.FC = () => {
         <section id="about" className={`${styles.flexCenter} ${styles.marginY} ${styles.paddingOwner} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow relative overflow-hidden`}>
             <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('/path/to/your/background-image.jpg')" }}></div> {/* Background image */}
             <div className="flex-1 flex flex-col relative z-10"> {/* Added z-index for layering */}
-                <h2 className={`${styles.heading2} text-shadow`}>
-                    Generated over <span className="text-gradient font-bold text-[60px] sm:text-[80px]">{displayCount.toLocaleString()}</span> Organic Views
+                <h2 className={`${styles.heading2} text-shadow text-center`}>
+                    Generated over <span className="text-gradient font-bold text-[50px] sm:text-[80px]">{displayCount.toLocaleString()}</span> Organic Views
                 </h2>
                 {showCountingText && (
-                    <h2 className={`${styles.heading3} sm:text-[40px] animate-fadeIn`}>
+                    <h2 className={`${styles.heading3} sm:text-[40px] animate-fadeIn text-center`}>
                         &nbsp;<span className="counting-text text-yellow-500">& Counting {countingText}</span>
                     </h2>
                 )}
@@ -114,7 +114,7 @@ const Owner: React.FC = () => {
                     </div>
                 </a>
                 <div className={`${styles.paragraph} max-w-[470px] mt-5 owner-list`}>
-                    <div className='owner-list-item flex items-center'>
+                    <div className='owner-list-item flex flex-col sm:flex-row items-center'>
                         <span className='owner-name text-lg font-bold'>Tharun Kumar K</span>
                         <span className='owner-name ml-2 text-lg font-medium text-[#33bbcf]'>@tharun_socialmentor</span>
                     </div>

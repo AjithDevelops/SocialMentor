@@ -17,7 +17,7 @@ const Hero: React.FC = () => (
         </p>
       </div>
       <div className="flex flex-row justify-between items-center w-full">
-        <h1 className={`flex-1 font-poppins font-semibold ss:text-[80px] text-[60px] text-white ss:leading-[120px] leading-[90px] ${styles.animatedText} social-mentor-animation`}>
+        <h1 className={`flex-1 font-poppins font-semibold ss:text-[80px] text-[40px] text-white ss:leading-[120px] leading-[90px] ${styles.animatedText} social-mentor-animation`}>
           <span className="text-gradient">Social Mentor</span>
         </h1>
 
