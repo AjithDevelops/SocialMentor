@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 export const metadata = {
   title: "Social Mentor",
-  description: "Social Mentor is an Modern Landing Page built with Next JS and Typescript",
+  description: "Social Mentor is an Digital Marketing Agency that helps you grow your business with Social Media Marketing",
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode; }) => {
