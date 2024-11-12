@@ -168,6 +168,16 @@ html, body {
   gap: 10px;
 }
 
+.ceo-list {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  margin: 10px 0; /* Add vertical spacing */
+  padding: 10px; /* Add padding around the list */
+  list-style-type: none; /* Remove default list styling */
+  gap: 10px;
+}
+
 .counting-text {
   opacity: 0.8;
 }

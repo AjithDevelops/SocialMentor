@@ -1,6 +1,6 @@
 "use client"
 import styles from "@/styles/style";
-import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Footer, Owner, InstaReels } from "@/components"
+import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, OwnerCEO, CTA, Footer, Owner, InstaReels } from "@/components"
 const Home: React.FC = () => {
   return (
     <>
@@ -18,6 +18,7 @@ const Home: React.FC = () => {
         <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
           <div className={`${styles.boxWidth}`}>
             <Stats />
+            <OwnerCEO /> 
             <Owner />   
             <Business />
             <InstaReels />
