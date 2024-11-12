@@ -33,7 +33,7 @@ import youtubeReal from "./youtubeReal.svg";
 import instagramReal from "./instaReal.svg";
 import Flag_for_review from "./Flag_For_Review.jpg";
 import QrCode from "./QR_code.jpeg";
-
+import closeRed from "./closeRed.svg";
 export {
   airbnb,
   bill,
@@ -70,4 +70,5 @@ export {
   instagramReal,
   Flag_for_review,
   QrCode,
+  closeRed,
 };

@@ -2,8 +2,8 @@
 import styles from "@/styles/style";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Footer, FooterShort, Navbar } from "@/components";
-import { youtubeReal, instagramReal, Flag_for_review, QrCode } from "@/public/assets"; // Import icons
+import { FooterShort, Navbar } from "@/components";
+import { youtubeReal, instagramReal, Flag_for_review, QrCode, closeRed } from "@/public/assets"; // Import icons
 import Button from "@components/Button";
 
 const OurServices: React.FC = () => {
@@ -15,6 +15,10 @@ const OurServices: React.FC = () => {
   const [followerType, setFollowerType] = useState("Real"); // State for follower type
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
   const [isQrModalOpen, setIsQrModalOpen] = useState(false); // State for QR modal visibility
+  const [userName, setUserName] = useState(""); // State for user name
+  const [userEmail, setUserEmail] = useState(""); // State for user email
+  const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false); // State for user info modal
+  const [validationMessage, setValidationMessage] = useState(""); // State for validation message
 
   // Define dropdown values and labels for followers
   const followerOptions = {
@@ -98,6 +102,28 @@ const OurServices: React.FC = () => {
     setPrice(`₹${count.toFixed(2)}`); // Display price in rupees
   };
 
+  async function sendMail() {
+    const response = await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to: 'ajithkumar1109@gmail.com', // Change to the company's email address
+        subject: `New Order Received: ${activeTab} - ${selectedOption}`, // Updated subject for company
+        text: `New Order Notification\n\nOrder Details:\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Adjusted content for clarity
+      }),
+    });
+  
+    const data = await response.json();
+    console.log(data);
+    if (response.ok) {
+      console.log('Email sent:', data.message);
+    } else {
+      console.error('Email send failed:', data.error);
+    }
+  }
+
   const handleCountChange = (value: number) => {
       setCount(value);
   };
@@ -125,7 +151,7 @@ const OurServices: React.FC = () => {
   };
 
   const handlePayClick = () => {
-    setIsQrModalOpen(true); // Open QR modal on pay button click
+    setIsUserInfoModalOpen(true); // Open user info modal on pay button click
   };
 
   const getSelectedLabel = () => {
@@ -149,6 +175,18 @@ const OurServices: React.FC = () => {
     }
     return "N/A"; // Default return if no match found
 };
+
+  // New function to handle proceeding to QR modal
+  const handleProceed = () => {
+    if (!userName || !userEmail) {
+      setValidationMessage("Please fill in both fields."); // Set validation message
+      return;
+    }
+    setValidationMessage(""); // Clear message if validation passes
+    setIsUserInfoModalOpen(false); // Close user info modal
+    setIsQrModalOpen(true); // Open QR modal
+    sendMail(); // Send mail after user info is validated
+  };
 
   return (
     <>
@@ -432,6 +470,49 @@ const OurServices: React.FC = () => {
                 Close
             </button>
           </div>
+        </div>
+      )}
+
+      {/* Modal for user information */}
+      {isUserInfoModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 m-10">
+            <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full flex flex-col items-center">
+                <div className="flex justify-between w-full mb-4">
+                    <h2 className="text-2xl font-semibold text-center">Enter Your Details</h2>
+                    <button onClick={() => setIsUserInfoModalOpen(false)} className="text-gray-500 hover:text-gray-800">
+                    <Image src={closeRed} className="object-contain" alt="close" className="w-3 h-3" />
+                    </button>
+                </div>
+                <input 
+                    type="text" 
+                    placeholder="Your Name" 
+                    value={userName} 
+                    onChange={(e) => {
+                        setUserName(e.target.value);
+                        setValidationMessage("");
+                    }} 
+                    className="mb-4 p-3 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input 
+                    type="email" 
+                    placeholder="Your Email" 
+                    value={userEmail} 
+                    onChange={(e) => {
+                        setUserEmail(e.target.value);
+                        setValidationMessage("");
+                    }} 
+                    className="mb-4 p-3 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                {validationMessage && (
+                  <p className="text-red-500 text-sm">{validationMessage}</p>
+                )}
+                <button 
+                    onClick={handleProceed}
+                    className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition"
+                >
+                    Proceed
+                </button>
+            </div>
         </div>
       )}
     </>
