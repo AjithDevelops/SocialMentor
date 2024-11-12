@@ -109,14 +109,13 @@ const OurServices: React.FC = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        to: 'ajithkumar1109@gmail.com', // Change to the company's email address
+        to: 'socialmentorbusiness@gmail.com', // Change to the company's email address
         subject: `New Order Received: ${activeTab} - ${selectedOption}`, // Updated subject for company
         text: `New Order Notification\n\nOrder Details:\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Adjusted content for clarity
       }),
     });
   
     const data = await response.json();
-    console.log(data);
     if (response.ok) {
       console.log('Email sent:', data.message);
     } else {
@@ -449,7 +448,7 @@ const OurServices: React.FC = () => {
       {/* Modal for QR Code */}
       {isQrModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 m-10">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full flex flex-col items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full flex flex-col items-center" style={{ maxHeight: '90vh', overflowY: 'auto' }}>
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <p className="text-center mb-2">Please scan to pay the amount:</p>
             <Image 
@@ -491,7 +490,7 @@ const OurServices: React.FC = () => {
                         setUserName(e.target.value);
                         setValidationMessage("");
                     }} 
-                    className="mb-4 p-3 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="mb-4 p-3 border border-gray-400 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <input 
                     type="email" 
@@ -501,7 +500,7 @@ const OurServices: React.FC = () => {
                         setUserEmail(e.target.value);
                         setValidationMessage("");
                     }} 
-                    className="mb-4 p-3 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="mb-4 p-3 border border-gray-400 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 {validationMessage && (
                   <p className="text-red-500 text-sm">{validationMessage}</p>
