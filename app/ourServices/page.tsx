@@ -480,7 +480,7 @@ const OurServices: React.FC = () => {
                 <div className="flex justify-between w-full mb-4">
                     <h2 className="text-2xl font-semibold text-center">Enter Your Details</h2>
                     <button onClick={() => setIsUserInfoModalOpen(false)} className="text-gray-500 hover:text-gray-800">
-                    <Image src={closeRed} className="object-contain" alt="close" className="w-3 h-3" />
+                    <Image src={closeRed} className="object-contain w-3 h-3" alt="close" />
                     </button>
                 </div>
                 <input 
