@@ -226,7 +226,7 @@ const OurServices: React.FC = () => {
               <h2 className={`${styles.elegantHeading3}`}>
               <span className=""> Social Media Engagement </span>
             </h2>
-                <div className="sm:p-4 p-2">
+                <div className="sm:mt-0 mt-2 sm:p-4 p-2">
                   <div className="flex md:flex-row justify-center space-x-0 md:space-x-4 mb-4">
                     <div 
                       onClick={() => { setActiveTab("Instagram"); handleOptionChange("Followers"); }} 
