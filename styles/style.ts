@@ -43,7 +43,7 @@ const styles = {
 
     elegantContainer: "sm:w-1/2 mx-6 my-6 w-full bg-black-gradient-2 rounded-lg shadow-xl sm:px-2 py-4 px-2 sm:my-10 my:6",
     elegantContainer1: "w-full bg-black-gradient-2 rounded-lg shadow-xl sm:px-2 py-8 sm:my-10 my:6 mx-10",
-    elegantDropdown: "p-2 sm:p-3 rounded-lg w-full sm:w-1/2 text-black mb-4 shadow-md border border-gray-300 transition duration-300 hover:shadow-lg", // Added hover effect
+    elegantDropdown: "p-2 sm:p-3 rounded-lg w-full sm:w-3/5 text-black mb-4 shadow-md border border-gray-300 transition duration-300 hover:shadow-lg", // Added hover effect
     elegantInput: "p-2 sm:p-3 rounded-lg w-full sm:w-1/2 text-black mx-auto shadow-md border border-gray-300 transition duration-300 hover:shadow-lg", // Added hover effect
     elegantPriceText: "mt-2 text-center text-gray-200 text-2xl font-semibold",
 

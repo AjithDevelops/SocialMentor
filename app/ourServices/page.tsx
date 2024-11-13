@@ -19,6 +19,9 @@ const OurServices: React.FC = () => {
   const [userEmail, setUserEmail] = useState(""); // State for user email
   const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false); // State for user info modal
   const [validationMessage, setValidationMessage] = useState(""); // State for validation message
+  const [accountLink, setAccountLink] = useState(""); // State for account link
+  const [isDisabledChecked, setIsDisabledChecked] = useState(false); // State for checkbox
+  const [payValidationMessage, setPayValidationMessage] = useState(""); // State for validation message
 
   // Define dropdown values and labels for followers
   const followerOptions = {
@@ -111,7 +114,7 @@ const OurServices: React.FC = () => {
       body: JSON.stringify({
         to: 'socialmentorbusiness@gmail.com', // Change to the company's email address
         subject: `New Order Received: ${activeTab} - ${selectedOption}`, // Updated subject for company
-        text: `New Order Notification\n\nOrder Details:\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Adjusted content for clarity
+        text: `New Order Notification\n\nOrder Details:\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
       }),
     });
   
@@ -150,6 +153,20 @@ const OurServices: React.FC = () => {
   };
 
   const handlePayClick = () => {
+    // Check if the required fields are filled
+    let validationMessage = "";
+    if (activeTab === "Instagram" && !isDisabledChecked) {
+        validationMessage += "Please check the 'Disabled' checkbox. "; // Set validation message for checkbox
+    }
+    if (!accountLink) {
+        validationMessage += "Please provide the required link."; // Set validation message for account link
+    }
+    
+    if (validationMessage) {
+        setPayValidationMessage(validationMessage); // Set combined validation message
+        return;
+    }
+    setPayValidationMessage(""); // Clear message if validation passes
     setIsUserInfoModalOpen(true); // Open user info modal on pay button click
   };
 
@@ -372,19 +389,35 @@ const OurServices: React.FC = () => {
                           ))}
                         </select>
                       )}
+                      <input 
+                        type="text" 
+                        placeholder={
+                          activeTab === "Instagram" 
+                            ? (selectedOption === "Followers" ? "Provide your Insta account link" : "Provide your Insta reel link") 
+                            : (selectedOption === "Subscribers" ? "Provide your youtube account link" : "Provide your youtube video link")
+                        } 
+                        value={accountLink} 
+                        onChange={(e) => setAccountLink(e.target.value)} // Store typed info in state
+                        className="sm:w-3/4 p-2 border border-gray-400 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      />
                       {activeTab === "Instagram" && (
                         <div className="flex items-center mt-4">
                           <input 
                             type="checkbox" 
                             id="flagForReview" 
                             className="mr-2" 
+                            checked={isDisabledChecked}
+                            onChange={(e) => setIsDisabledChecked(e.target.checked)} // Update checkbox state
                           />
                           <div className="text-white text-md">
                             Disabled "Flag for Review" in my account <span><a href="#" className="text-blue-500 ml-2 underline" onClick={toggleModal}>How to disable?</a></span>
                             </div>
                           </div>
             
-                      )}
+                      )}  
+                      {payValidationMessage && (
+                        <p className="text-red-500 mt-2 text-sm">{payValidationMessage}</p> // Display validation message
+                      )}         
                       <button 
                         className="py-2 px-3 mt-6 bg-blue-gradient font-poppins font-medium text-[16px] text-primary outline-none rounded-[10px] hover:translate-y-2 hover:scale-110 transition-all ease-linear cursor-pointer" 
                         onClick={handlePayClick}
@@ -460,6 +493,8 @@ const OurServices: React.FC = () => {
                 <h4 className="font-medium sm:text-base text-sm">Order Details:</h4>
                 <p className="sm:text-base text-sm">✓ {activeTab} {selectedOption}  </p>
                 <p className="sm:text-base text-sm">✓ {getSelectedLabel()}</p>
+                <p className="sm:text-base text-sm">✓ Provided Link: <span className="text-md">{accountLink}</span></p>
+                <br />
                 <p className="sm:text-base text-sm">Amount: <span className="text-md font-bold"> {price} </span></p>
                 <div className="border border-blue-500 bg-blue-100 p-4 rounded-md mt-4">
                     <p className="sm:text-base text-sm">Once paid, send the payment screenshot to <a href="https://www.instagram.com/tharun_socialmentor" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">Tharun Kumar</a> to start the process.</p>
