@@ -182,11 +182,6 @@ html, body {
   opacity: 0.8;
 }
 
-
-.owner-list-item:hover {
-  /* transform: scale(1.05); */ /* Commented out to disable hover effect */
-}
-
 .animate-fadeIn {
     animation: fadeIn 0.5s ease-in-out forwards; /* Apply fade-in animation */
 }

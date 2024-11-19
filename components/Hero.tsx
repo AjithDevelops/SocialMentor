@@ -5,17 +5,17 @@ import GetStarted from "./GetStarted";
 import Image from "next/image";
 
 const Hero: React.FC = () => (
-  <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
+  <section id="home" className={`flex md:flex-row flex-col`}>
     <div
       className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}
     >
-      <div className="flex flex-row items-center py-[12px] px-8 bg-discount-gradient rounded-[20px] mb-4">
+      {/* <div className="flex flex-row items-center py-[12px] px-8 bg-discount-gradient rounded-[20px] mb-4">
         <Image src={discount} alt="discount" className="w-[48px] h-[48px]" />
         <p className={`${styles.paragraph} ml-4`}>
           <span className="text-yellow-500 font-bold animate-pulse">20%</span> Discount For{" "}
           <span className="text-white">1 Month</span> Account
         </p>
-      </div>
+      </div> */}
       <div className="flex flex-row justify-between items-center w-full">
         <h1 className={`flex-1 font-poppins font-semibold ss:text-[80px] text-[40px] text-white ss:leading-[120px] leading-[90px] ${styles.animatedText} social-mentor-animation`}>
           <span className="text-gradient">Social Mentor</span>
