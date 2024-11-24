@@ -3,10 +3,28 @@ import styles from "@/styles/style";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FooterShort, Navbar } from "@/components";
-import { youtubeReal, instagramReal, Flag_for_review, QrCode, closeRed } from "@/public/assets"; // Import icons
+import { youtubeReal, instagramReal, Flag_for_review, QrCode, closeRed, GoogleImage } from "@/public/assets"; // Import icons
 import Button from "@components/Button";
+import { useSession, signIn } from 'next-auth/react'; // Import useSession from next-auth
+import {FaGoogle, FaTimes} from 'react-icons/fa'
 
 const OurServices: React.FC = () => {
+  const { data: session } = useSession(); // Get session data
+  const [signInSuccess, setSignInSuccess] = useState(false); // State for sign-in success message
+  const [userName, setUserName] = useState(""); // State for user name
+  const [userEmail, setUserEmail] = useState(""); // State for user email
+
+  useEffect(() => {
+    if (session) {
+      setSignInSuccess(true); // Set sign-in success message when session is available
+      setUserName(session?.user?.name ?? ""); // Set username from session, default to empty string if null or undefined
+      setUserEmail(session?.user?.email ?? ""); // Set email from session, default to empty string if null or undefined
+    } else {
+      setSignInSuccess(false); // Reset if no session
+      setUserName(""); // Clear username if no session
+      setUserEmail(""); // Clear email if no session
+    }
+  }, [session]); // Run effect when session changes
 
   const [activeTab, setActiveTab] = useState("Instagram"); // State for active tab
   const [selectedOption, setSelectedOption] = useState("Followers"); // Default selected option
@@ -15,8 +33,6 @@ const OurServices: React.FC = () => {
   const [followerType, setFollowerType] = useState("Real"); // State for follower type
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
   const [isQrModalOpen, setIsQrModalOpen] = useState(false); // State for QR modal visibility
-  const [userName, setUserName] = useState(""); // State for user name
-  const [userEmail, setUserEmail] = useState(""); // State for user email
   const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false); // State for user info modal
   const [validationMessage, setValidationMessage] = useState(""); // State for validation message
   const [accountLink, setAccountLink] = useState(""); // State for account link
@@ -112,7 +128,6 @@ const OurServices: React.FC = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        to: 'socialmentorbusiness@gmail.com', // Change to the company's email address
         subject: `New Order Received: ${activeTab} - ${selectedOption}`, // Updated subject for company
         text: `New Order Notification\n\nOrder Details:\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
       }),
@@ -152,6 +167,19 @@ const OurServices: React.FC = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  useEffect(() => {
+    // Retrieve values from local storage on component mount
+    const storedAccountLink = localStorage.getItem('accountLink');
+    const storedFlagForReview = localStorage.getItem('isDisabledChecked');
+
+    if (storedAccountLink) {
+      setAccountLink(storedAccountLink);
+    }
+    if (storedFlagForReview) {
+      setIsDisabledChecked(JSON.parse(storedFlagForReview));
+    }
+  }, []);
+
   const handlePayClick = () => {
     // Check if the required fields are filled
     let validationMessage = "";
@@ -167,7 +195,17 @@ const OurServices: React.FC = () => {
         return;
     }
     setPayValidationMessage(""); // Clear message if validation passes
-    setIsUserInfoModalOpen(true); // Open user info modal on pay button click
+
+    if (!session) {
+      // Store values in local storage
+      localStorage.setItem('accountLink', accountLink);
+      localStorage.setItem('isDisabledChecked', JSON.stringify(isDisabledChecked));
+      setIsUserInfoModalOpen(true); // Sign In to get user Details
+    } else {
+      localStorage.removeItem('accountLink');
+      localStorage.removeItem('isDisabledChecked');
+      handleProceed();
+    }
   };
 
   const getSelectedLabel = () => {
@@ -194,12 +232,12 @@ const OurServices: React.FC = () => {
 
   // New function to handle proceeding to QR modal
   const handleProceed = () => {
-    if (!userName || !userEmail) {
-      setValidationMessage("Please fill in both fields."); // Set validation message
-      return;
-    }
+    // if (!userName || !userEmail) {
+    //   setValidationMessage("Please fill in both fields."); // Set validation message
+    //   return;
+    // }
     setValidationMessage(""); // Clear message if validation passes
-    setIsUserInfoModalOpen(false); // Close user info modal
+    // setIsUserInfoModalOpen(false); // Close user info modal
     setIsQrModalOpen(true); // Open QR modal
     sendMail(); // Send mail after user info is validated
   };
@@ -418,6 +456,9 @@ const OurServices: React.FC = () => {
                       {payValidationMessage && (
                         <p className="text-red-500 mt-2 text-sm">{payValidationMessage}</p> // Display validation message
                       )}         
+                      {!payValidationMessage && signInSuccess && (
+                        <p className="text-green-500 mt-2 text-sm">Sign In Successful!</p>
+                      )}
                       <button 
                         className="py-2 px-3 mt-6 bg-blue-gradient font-poppins font-medium text-[16px] text-primary outline-none rounded-[10px] hover:translate-y-2 hover:scale-110 transition-all ease-linear cursor-pointer" 
                         onClick={handlePayClick}
@@ -508,46 +549,23 @@ const OurServices: React.FC = () => {
       )}
 
       {/* Modal for user information */}
-      {isUserInfoModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 m-10">
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full flex flex-col items-center">
-                <div className="flex justify-between w-full mb-4">
-                    <h2 className="text-2xl font-semibold text-center">Enter Your Details</h2>
-                    <button onClick={() => setIsUserInfoModalOpen(false)} className="text-gray-500 hover:text-gray-800">
-                    <Image src={closeRed} className="object-contain w-3 h-3" alt="close" />
-                    </button>
-                </div>
-                <input 
-                    type="text" 
-                    placeholder="Your Name" 
-                    value={userName} 
-                    onChange={(e) => {
-                        setUserName(e.target.value);
-                        setValidationMessage("");
-                    }} 
-                    className="mb-4 p-3 border border-gray-400 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-600"
-                />
-                <input 
-                    type="email" 
-                    placeholder="Your Email" 
-                    value={userEmail} 
-                    onChange={(e) => {
-                        setUserEmail(e.target.value);
-                        setValidationMessage("");
-                    }} 
-                    className="mb-4 p-3 border border-gray-400 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-600"
-                />
-                {validationMessage && (
-                  <p className="text-red-500 text-sm">{validationMessage}</p>
-                )}
-                <button 
-                    onClick={handleProceed}
-                    className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition"
-                >
-                    Proceed
-                </button>
-            </div>
-        </div>
+      {isUserInfoModalOpen && !session && (
+         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
+         <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center relative">
+           <FaTimes 
+             className="absolute top-4 right-4 cursor-pointer"
+             onClick={() => setIsUserInfoModalOpen(false)}
+           />
+           <h2 className="text-xl font-bold mb-4 text-center">Sign In</h2>
+           <p className="mb-4 text-center">To continue with Social Mentor</p>
+           <button 
+             className="bg-blue-gradient  py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300"
+             onClick={() => signIn('google')}
+           >
+             <span className="flex items-center"><Image src={GoogleImage} alt="Google Image" className="mr-2 w-6 h-6" />Sign in with Google</span>
+           </button>
+         </div>
+       </div>
       )}
     </>
   );

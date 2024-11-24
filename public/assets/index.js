@@ -35,6 +35,7 @@ import Flag_for_review from "./Flag_For_Review.jpg";
 import QrCode from "./QR_code.jpeg";
 import closeRed from "./closeRed.svg";
 import CEO from "./CEO.jpeg";
+import GoogleImage from "./GoogleImage.png"
 
 export {
   airbnb,
@@ -73,5 +74,6 @@ export {
   Flag_for_review,
   QrCode,
   closeRed,
-  CEO
+  CEO,
+  GoogleImage
 };

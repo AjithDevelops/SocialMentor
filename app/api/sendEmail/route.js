@@ -3,8 +3,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request) {
   const { to, subject, text } = await request.json();
-  console.log(to, subject, text);
-  console.log(process.env.SMTP_HOST, process.env.SMTP_PORT, process.env.SMTP_USER, process.env.SMTP_PASS);
+  
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -19,7 +18,7 @@ export async function POST(request) {
     // Send the email
     await transporter.sendMail({
       from: process.env.SMTP_USER,
-      to,
+      to: process.env.SMTP_MAILTO,
       subject,
       text,
     });
