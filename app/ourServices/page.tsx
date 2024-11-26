@@ -70,13 +70,16 @@ const OurServices: React.FC = () => {
     setPrice(`₹${count.toFixed(2)}`); // Display price in rupees
   };
 
-  async function sendMail() {
+  async function sendMail(orderId: number) {
+    const replaceText = `New Order Notification\n\nOrder Details:\n- Order ID: ${orderId}\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
+
     const response = await fetch('/api/sendEmail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        isOwner:true,
         subject: `New Order Received: ${activeTab} - ${selectedOption}`, // Updated subject for company
         text: `New Order Notification\n\nOrder Details:\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
       }),
@@ -87,6 +90,27 @@ const OurServices: React.FC = () => {
       console.log('Email sent:', data.message);
     } else {
       console.error('Email send failed:', data.error);
+    }
+  }
+
+  async function sendMailToClient(orderId: number) {
+    const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            to: userEmail, // Send to the user's email
+            subject: `Order Confirmation: ${activeTab} - ${selectedOption}`, // Subject for the client
+            text: `Dear ${userName},\n\nThank you for your order!\n\nOrder Details:\n- Order ID: ${orderId}\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nWe appreciate your business and will process your order promptly.\n\nBest regards,\nSocial Mentor`, // Body of the email
+        }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+        console.log('Confirmation email sent to client:', data.message);
+    } else {
+        console.error('Failed to send confirmation email to client:', data.error);
     }
   }
 
@@ -182,7 +206,40 @@ const OurServices: React.FC = () => {
   const handleProceed = () => {
     setValidationMessage(""); // Clear message if validation passes
     setIsQrModalOpen(true); // Open QR modal
-    sendMail(); // Send mail after user info is validated
+    
+    StoreOrderInDB(); // Call to store order in the database
+  };
+
+  // Add the StoreOrderInDB function
+  const StoreOrderInDB = async () => {
+    const orderDetails = {
+        platform: activeTab,
+        type: selectedOption,
+        amount: price,
+        service: getSelectedLabel(),
+        link: accountLink,
+        customerName: userName,
+        customerEmail: userEmail,
+        orderedAt: new Date().toISOString(), // Add current date and time in ISO format
+    };
+
+    const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderDetails),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+        console.log('Order stored in DB:', data.message);
+        console.log('Order ID:', data?.orderID); // Capture the orderID from the response
+        sendMail(data?.orderID); // Send mail to the owner
+        // sendMailToClient(data?.orderID); // Send confirmation email to the client
+    } else {
+        console.error('Failed to store order in DB:', data.error);
+    }
   };
 
   return (

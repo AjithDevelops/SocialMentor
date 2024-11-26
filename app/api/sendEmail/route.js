@@ -2,8 +2,8 @@
 import nodemailer from 'nodemailer';
 
 export async function POST(request) {
-  const { to, subject, text } = await request.json();
-  
+  let { to, isOwner, subject, text } = await request.json();
+
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -18,7 +18,7 @@ export async function POST(request) {
     // Send the email
     await transporter.sendMail({
       from: process.env.SMTP_USER,
-      to: process.env.SMTP_MAILTO,
+      to: isOwner ? process.env.SMTP_MAILTO : to,
       subject,
       text,
     });
