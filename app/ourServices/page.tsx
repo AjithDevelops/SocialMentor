@@ -71,7 +71,7 @@ const OurServices: React.FC = () => {
   };
 
   async function sendMail(orderId: number) {
-    const replaceText = `New Order Notification\n\nOrder Details:\n- Order ID: ${orderId}\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
+    // const replaceText = `New Order Notification\n\nOrder Details:\n- Order ID: ${orderId}\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
 
     const response = await fetch('/api/sendEmail', {
       method: 'POST',
