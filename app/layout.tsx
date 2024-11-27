@@ -8,6 +8,9 @@ export const metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode; }) => {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/assets/SM_crop.jpg" />
+      </head>
       <body>
         <ClientSessionProvider>
         {children}
