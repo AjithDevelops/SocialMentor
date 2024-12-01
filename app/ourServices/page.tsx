@@ -71,7 +71,6 @@ const OurServices: React.FC = () => {
   };
 
   async function sendMail(orderId: number) {
-    // const replaceText = `New Order Notification\n\nOrder Details:\n- Order ID: ${orderId}\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
 
     const response = await fetch('/api/sendEmail', {
       method: 'POST',
@@ -81,7 +80,7 @@ const OurServices: React.FC = () => {
       body: JSON.stringify({
         isOwner:true,
         subject: `New Order Received: ${activeTab} - ${selectedOption}`, // Updated subject for company
-        text: `New Order Notification\n\nOrder Details:\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
+        text: `New Order Notification\n\nOrder Details:\n- Order ID: ${orderId}\n- Platform: ${activeTab}\n- Type: ${selectedOption}\n- Amount: ${price}\n- Requested Service: ${getSelectedLabel()}\n- Provided Link: ${accountLink}\n\nCustomer Details:\n- Name: ${userName}\n- Email: ${userEmail}\n\nPlease process this order promptly.\nThank you!`, // Ensure no quotes around email
       }),
     });
   
@@ -236,7 +235,7 @@ const OurServices: React.FC = () => {
         console.log('Order stored in DB:', data.message);
         console.log('Order ID:', data?.orderID); // Capture the orderID from the response
         sendMail(data?.orderID); // Send mail to the owner
-        // sendMailToClient(data?.orderID); // Send confirmation email to the client
+        sendMailToClient(data?.orderID); // Send confirmation email to the client
     } else {
         console.error('Failed to store order in DB:', data.error);
     }
