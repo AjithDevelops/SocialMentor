@@ -12,7 +12,7 @@ const RootLayout = ({ children }: { children: React.ReactNode; }) => {
         <link rel="icon" href="/assets/SM_crop.jpg" />
         <meta property="og:title" content="Social Mentor" />
         <meta property="og:description" content="Social Mentor is a Digital Marketing Agency that helps you grow your business with Social Media Marketing" />
-        <meta property="og:image" content="/assets/SM_crop.jpg" />
+        <meta property="og:image" content="/assets/SM.jpg" />
         <meta property="og:url" content="https://socialmentor.co" />
         <meta property="og:type" content="website" />
       </head>
