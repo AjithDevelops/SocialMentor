@@ -98,7 +98,7 @@ html, body {
 
 .owner-image {
     /* opacity: 0.9; */
-  width: 120px; /* Adjusted size to reduce the image size */
+  width: 140px; /* Adjusted size to reduce the image size */
   height: auto; /* Maintain aspect ratio */
   animation: none; /* No animation by default */
 }

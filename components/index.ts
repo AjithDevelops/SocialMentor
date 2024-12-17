@@ -16,6 +16,7 @@ import RefundPolicy from "./RefundPolicy";
 import Plans from "./Plans";
 import FooterShort from "./FooterShort";
 import OwnerCEO from "./OwnerCEO";
+import OwnerCoFounder from "./OwnerCoFounder";
 
 export {
     Navbar,
@@ -35,5 +36,6 @@ export {
     RefundPolicy,
     Plans,
     FooterShort,
-    OwnerCEO
+    OwnerCEO,
+    OwnerCoFounder
 };
