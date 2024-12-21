@@ -47,6 +47,8 @@ const styles = {
     elegantInput: "p-2 sm:p-3 rounded-lg w-full sm:w-1/2 text-black mx-auto shadow-md border border-gray-300 transition duration-300 hover:shadow-lg", // Added hover effect
     elegantPriceText: "mt-2 text-center text-gray-200 text-2xl font-semibold",
 
+    contactContainer: "sm:w-1/3 h-full mx-6 my-6 w-full bg-black-gradient-2 rounded-lg shadow-xl sm:px-2 py-4 px-2 sm:my-10 my:6",
+
     cardContainer: "bg-white rounded-lg shadow-lg p-6 border border-gray-300 transition duration-300 hover:shadow-xl", // Added hover effect
 };
 

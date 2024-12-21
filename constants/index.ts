@@ -140,7 +140,7 @@ export const footerLinks = [
         links: [
             {
                 name: "Contact Us",
-                link: "https://www.hoobank.com/help-center/",
+                link: "/contactUs",
             },
             // {
             //     name: "Partners",
