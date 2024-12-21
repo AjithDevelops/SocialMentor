@@ -91,7 +91,7 @@ const ContactUs: React.FC = () => {
         </div>
         <div className={`flex flex-col-reverse sm:flex-row justify-center items-center ml-4 mr-4`}>
         <div className="bg-white rounded-lg shadow-md p-4">
-            <h2 className="text-lg font-bold text-gray-700 mb-2">Our Address:</h2>
+            <h2 className="sm:text-base text-sm font-bold text-gray-700 mb-2">Our Address:</h2>
             <div className="flex flex-col text-gray-600 text-sm">
               <p>Villa no 39 Casa Grande,</p>
               <p>Urnabo Phase 1, Vengadamangalam,</p>
@@ -104,7 +104,7 @@ const ContactUs: React.FC = () => {
             loading="lazy" ></iframe>
             </div>
           </div>
-          <div className={`${styles.contactContainer} ${styles.paddingX} sm:pt-10 text-sm sm:text-base`}>
+          <div className={`${styles.contactContainer} ${styles.paddingX} sm:pt-8 text-sm sm:text-base`}>
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
               <div className="flex space-x-2">
                 <select 
