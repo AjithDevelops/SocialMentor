@@ -59,9 +59,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
-      <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center relative">
-        <FaTimes className="absolute top-4 right-4 cursor-pointer" onClick={onClose} />
+      <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col relative">
         <h2 className="text-xl font-bold mb-4 text-center">Sign In</h2>
+        <div className="absolute cursor-pointer" style={{top:"16px", right:"16px"}}>
+        <FaTimes onClick={onClose} />
+        </div>
         <p className="mb-4 text-center">To continue with Social Mentor</p>
         <button 
           className="bg-blue-gradient py-2 px-4 rounded-lg hover:bg-red-600 transition duration-300"
