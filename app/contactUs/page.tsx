@@ -59,7 +59,7 @@ const ContactUs: React.FC = () => {
         headers: {
         'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ 
         isOwner: true,
         subject: subject,
         text: `${subject ?? 'Message'} from the user.\n\nName: ${name}\nEmail: ${email}\n\nMessage: ${message}`,
