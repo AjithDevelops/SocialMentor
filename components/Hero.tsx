@@ -26,7 +26,7 @@ const Hero: React.FC = () => (
         We Empower Your Digital presence with Entertainment 
       </p>
       <h1 className="w-full font-poppins font-semibold ss:text-[24px] text-[20px] text-white ss:leading-[50px] leading-[40px]">
-        <span className="animated-item">✦ &nbsp;Social Media Mastery</span>
+        <span className="animated-item">✦ &nbsp;Social Media Management</span>
         <br />
         <span className="animated-item">✦ &nbsp;Digital Marketing</span>
         <br />

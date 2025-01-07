@@ -19,8 +19,8 @@ const Home: React.FC = () => {
           <div className={`${styles.boxWidth}`}>
             <Stats />
             <OwnerCEO /> 
-            {/* <Owner />    */}
-            <OwnerCoFounder />
+            <Owner />   
+            {/* <OwnerCoFounder /> */}
             <Business />
             <InstaReels />
             {/* <Billing /> */}
